@@ -1,0 +1,914 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio | IT Student</title>
+
+    <style>
+        /* ===== GENERAL STYLING ===== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #071426,
+                #0b1f3a,
+                #102c50
+            );
+            color: #edf4ff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 85px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-label {
+            color: #60a5fa;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            color: #bdcce0;
+            max-width: 720px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 17, 35, 0.97);
+            border-bottom: 1px solid #294d78;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #d5e2f7;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* ===== HOME / HERO ===== */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 90px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            color: #93c5fd;
+            background: #142e50;
+            border: 1px solid #294d78;
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 66px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            color: #bdcce0;
+            font-size: 17px;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 23px;
+            margin: 5px 8px 5px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button-primary {
+            color: #071426;
+            background: #60a5fa;
+        }
+
+        .button-primary:hover {
+            background: #93c5fd;
+            transform: translateY(-3px);
+        }
+
+        .button-outline {
+            color: #dbeafe;
+            border: 1px solid #60a5fa;
+        }
+
+        .button-outline:hover {
+            background: #142e50;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about-card {
+            background: linear-gradient(
+                145deg,
+                #122b4d,
+                #0c1c34
+            );
+            border: 1px solid #294d78;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .about-card p {
+            color: #bdcce0;
+            margin-bottom: 15px;
+        }
+
+        /* ===== EDUCATION ===== */
+
+        .info-card {
+            background: linear-gradient(
+                145deg,
+                #122b4d,
+                #0c1c34
+            );
+            border: 1px solid #294d78;
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-4px);
+        }
+
+        .info-card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .info-card p {
+            color: #bdcce0;
+            margin-bottom: 5px;
+        }
+
+        .education-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== SKILLS ===== */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .skill-number {
+            color: #60a5fa;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .skill-card h3 {
+            margin-top: 12px;
+        }
+
+        /* ===== PROJECTS ===== */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(
+                145deg,
+                #122b4d,
+                #0c1c34
+            );
+            border: 1px solid #294d78;
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #60a5fa;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-icon {
+            font-size: 30px;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .project-number {
+            color: #60a5fa;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+        }
+
+        .project-card h3 {
+            font-size: 23px;
+            color: #ffffff;
+            margin: 12px 0;
+        }
+
+        .project-card p {
+            color: #bdcce0;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .tags span {
+            background: #19385f;
+            color: #bfdbfe;
+            border: 1px solid #2b4f7a;
+            padding: 5px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .project-link {
+            color: #7db8ff;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact-card {
+            background: linear-gradient(
+                145deg,
+                #122b4d,
+                #0c1c34
+            );
+            border: 1px solid #294d78;
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .contact-card p {
+            color: #bdcce0;
+            margin-bottom: 18px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            color: #93c5fd;
+            border: 1px solid #294d78;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: #19385f;
+            border-color: #60a5fa;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            border-top: 1px solid #294d78;
+            background: rgba(5, 17, 35, 0.7);
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: #bdcce0;
+        }
+
+        footer a {
+            color: #7db8ff;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+
+        @media (max-width: 900px) {
+            .navbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 12px 18px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 65px 0;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card,
+            .about-card,
+            .contact-card {
+                padding: 22px;
+            }
+
+            .nav-links {
+                gap: 10px 14px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+        
+/* Home Section with Profile Picture */
+
+
+/* Perfect Circular Profile Picture */
+
+
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 75vh;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    color: #60a5fa;
+    margin-bottom: 15px;
+}
+
+.hero-content h3 {
+    font-size: 20px;
+    color: #dbeafe;
+    margin-bottom: 18px;
+}
+
+.hero-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.hero-image {
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #60a5fa;
+    box-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .hero-layout {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 35px;
+    }
+
+    .hero-image {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-content h2 {
+        font-size: 35px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#home" class="logo">My<span>Portfolio.</span></a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    ```html
+<!-- HOME -->
+```html
+<!-- HOME SECTION -->
+<section class="hero" id="home">
+    <div class="container hero-layout">
+
+        <div class="hero-content">
+            <h1>Hello, I'm</h1>
+
+            <h2>Toseefa Rafique</h2>
+
+            <h3>
+                Flutter Developer |
+                BS Information Technology Student
+            </h3>
+
+            <p>
+                I build useful, modern, user-friendly
+                digital solutions with Flutter.
+            </p>
+
+            <a href="#projects" class="button button-primary">
+                View My Projects →
+            </a>
+
+            <a href="#contact" class="button button-outline">
+                Contact Me →
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img src="download.jpg"
+                 alt="Toseefa Rafique">
+        </div>
+
+    </div>
+</section>
+```
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="container">
+            <p class="section-label">A LITTLE INTRODUCTION</p>
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-card">
+                <p>
+                    I am a BS Information Technology student with
+                    an interest in web development and mobile
+                    application development.
+                </p>
+
+                <p>
+                    I enjoy transforming ideas into practical
+                    digital projects and creating clean,
+                    user-friendly interfaces.
+                </p>
+
+                <p>
+                    I am committed to improving my programming
+                    skills, exploring new technologies, and
+                    building projects that help me gain
+                    real-world experience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+        <div class="container">
+            <p class="section-label">MY ACADEMIC JOURNEY</p>
+            <h2 class="section-title">My Education</h2>
+
+            <div class="info-card">
+                <div class="education-icon">🎓</div>
+
+                <h3>BS Information Technology</h3>
+
+                 <p class="university-name">
+                University of the Punjab
+            </p>
+
+            <p class="education-year">
+                2023 – 2027
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+        <div class="container">
+            <p class="section-label">WHAT I WORK WITH</p>
+            <h2 class="section-title">My Skills</h2>
+
+            <p class="section-description">
+                Technologies and skills I use to build
+                digital experiences.
+            </p>
+
+            <div class="skills-grid">
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">01</span>
+                    <h3>HTML</h3>
+                    <p>Creating structured web pages.</p>
+                </div>
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">02</span>
+                    <h3>CSS</h3>
+                    <p>Designing attractive and responsive layouts.</p>
+                </div>
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">03</span>
+                    <h3>JavaScript</h3>
+                    <p>Adding interactive website features.</p>
+                </div>
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">04</span>
+                    <h3>Flutter</h3>
+                    <p>Learning cross-platform app development.</p>
+                </div>
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">05</span>
+                    <h3>Dart</h3>
+                    <p>Exploring programming for Flutter apps.</p>
+                </div>
+
+                <div class="info-card skill-card">
+                    <span class="skill-number">06</span>
+                    <h3>GitHub</h3>
+                    <p>Hosting and managing coding projects.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+        <div class="container">
+            <p class="section-label">MY DEVELOPMENT WORK</p>
+            <h2 class="section-title">My Projects</h2>
+
+            <p class="section-description">
+                Here are some of my academic and practice
+                projects. Explore them on GitHub.
+            </p>
+
+            <div class="projects-grid">
+
+                <!-- PROJECT 1 -->
+                <div class="project-card">
+                    <div class="project-icon">✦</div>
+
+                    <span class="project-number">
+                        01 / EXAM APP
+                    </span>
+
+                    <h3>Bano Qabil Exam App</h3>
+
+                    <p>
+                        An exam application project created
+                        to explore online examination and
+                        exam practice features.
+                    </p>
+
+                    <div class="tags">
+                        <span>Exam App</span>
+                        <span>Development</span>
+                    </div>
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/toseefarafique/bano-qabil-exam-app"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project-card">
+                    <div class="project-icon">✚</div>
+
+                    <span class="project-number">
+                        02 / HEALTHCARE
+                    </span>
+
+                    <h3>Doctor Appointment App</h3>
+
+                    <p>
+                        A healthcare app project focused on
+                        exploring doctor information and
+                        appointment management.
+                    </p>
+
+                    <div class="tags">
+                        <span>Healthcare</span>
+                        <span>App Development</span>
+                    </div>
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/toseefarafique/doctor-appointment-app"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project-card">
+                    <div class="project-icon">◇</div>
+
+                    <span class="project-number">
+                        03 / GAME
+                    </span>
+
+                    <h3>Tic Tac Toe Game</h3>
+
+                    <p>
+                        A classic Tic Tac Toe game project
+                        for practicing game logic and
+                        interactive user experiences.
+                    </p>
+
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/toseefarafique/tic-tac-toe-game"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- PROJECT 4 -->
+                <div class="project-card">
+                    <div class="project-icon">▣</div>
+
+                    <span class="project-number">
+                        04 / E-COMMERCE
+                    </span>
+
+                    <h3>Amazon Clone</h3>
+
+                    <p>
+                        An e-commerce practice project inspired
+                        by Amazon's website layout and
+                        shopping experience.
+                    </p>
+
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Web Development</span>
+                    </div>
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/toseefarafique/amazon-clone"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- PROJECT 5 -->
+                <div class="project-card">
+                    <div class="project-icon">🍽</div>
+
+                    <span class="project-number">
+                        05 / WEBSITE
+                    </span>
+
+                    <h3>Food Web Project</h3>
+
+                    <p>
+                        A food-themed website created to
+                        practice webpage structure, styling,
+                        and layout design.
+                    </p>
+
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Web Design</span>
+                    </div>
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/toseefarafique/food_web_activity"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="container">
+            <p class="section-label">GET IN TOUCH</p>
+            <h2 class="section-title">Let's Work Together</h2>
+
+            <div class="contact-card">
+                <p>
+                    Have a project or opportunity in mind?
+                    Feel free to connect with me.
+                </p>
+
+                <div class="contact-links">
+
+                    <a
+                        href="https://github.com/toseefarafique"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        GitHub ↗
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LinkedIn ↗
+                    </a>
+
+                    <a href="mailto:">
+                        Email Me ↗
+                    </a>
+
+                </div>
+
+                <p style="margin-top: 25px; margin-bottom: 0;">
+                    📍 Rawalpindi, Pakistan
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 Toseefa Rafique. All rights reserved.
+        </p>
+
+        <a href="#home">Back to Top ↑</a>
+    </footer>
+
+</body>
+</html>
+```
