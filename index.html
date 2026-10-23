@@ -1,15 +1,12 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Portfolio | IT Student</title>
+    <title>My Portfolio | Toseefa Rafique</title>
 
     <style>
-        /* ===== GENERAL STYLING ===== */
-
         * {
             margin: 0;
             padding: 0;
@@ -23,12 +20,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(
-                135deg,
-                #071426,
-                #0b1f3a,
-                #102c50
-            );
+            background: linear-gradient(135deg, #071426, #0b1f3a, #102c50);
             color: #edf4ff;
             line-height: 1.7;
         }
@@ -58,7 +50,7 @@
 
         .section-title {
             font-size: 36px;
-            color: #ffffff;
+            color: white;
             margin-bottom: 18px;
         }
 
@@ -68,7 +60,7 @@
             margin-bottom: 30px;
         }
 
-        /* ===== NAVIGATION BAR ===== */
+        /* NAVIGATION */
 
         .navbar {
             position: sticky;
@@ -86,7 +78,7 @@
         .logo {
             font-size: 22px;
             font-weight: bold;
-            color: #ffffff;
+            color: white;
             white-space: nowrap;
         }
 
@@ -111,46 +103,98 @@
             color: #60a5fa;
         }
 
-        /* ===== HOME / HERO ===== */
+        /* HOME SECTION */
 
         .hero {
             min-height: 85vh;
             display: flex;
             align-items: center;
-            padding: 90px 0;
+            padding: 70px 0;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
         }
 
         .hero-content {
-            max-width: 800px;
+            flex: 1;
+            animation: slideIn 1s ease both;
         }
 
-        .hero-badge {
-            display: inline-block;
-            color: #93c5fd;
-            background: #142e50;
-            border: 1px solid #294d78;
-            padding: 7px 16px;
-            border-radius: 30px;
-            font-size: 13px;
-            margin-bottom: 25px;
+        .hero-content h1 {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 10px;
         }
 
-        .hero h1 {
-            font-size: clamp(38px, 6vw, 66px);
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .hero h1 span {
+        .hero-content h2 {
+            font-size: clamp(35px, 5vw, 48px);
             color: #60a5fa;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
 
-        .hero p {
+        .hero-content h3 {
+            font-size: 20px;
+            color: #dbeafe;
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
             color: #bdcce0;
             font-size: 17px;
             max-width: 650px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #60a5fa;
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+            animation: profileReveal 1.2s ease both,
+                       profileFloat 4s ease-in-out 1.2s infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        @keyframes profileReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-12deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -10px; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .button {
@@ -181,34 +225,28 @@
             background: #142e50;
         }
 
-        /* ===== ABOUT ===== */
+        /* ABOUT AND CARDS */
 
-        .about-card {
-            background: linear-gradient(
-                145deg,
-                #122b4d,
-                #0c1c34
-            );
+        .about-card,
+        .info-card,
+        .project-card,
+        .contact-card {
+            background: linear-gradient(145deg, #122b4d, #0c1c34);
             border: 1px solid #294d78;
             border-radius: 16px;
+        }
+
+        .about-card {
             padding: 30px;
         }
 
-        .about-card p {
+        .about-card p,
+        .info-card p {
             color: #bdcce0;
             margin-bottom: 15px;
         }
 
-        /* ===== EDUCATION ===== */
-
         .info-card {
-            background: linear-gradient(
-                145deg,
-                #122b4d,
-                #0c1c34
-            );
-            border: 1px solid #294d78;
-            border-radius: 15px;
             padding: 25px;
             transition: 0.3s;
         }
@@ -219,14 +257,9 @@
         }
 
         .info-card h3 {
-            color: #ffffff;
+            color: white;
             margin-bottom: 10px;
             font-size: 21px;
-        }
-
-        .info-card p {
-            color: #bdcce0;
-            margin-bottom: 5px;
         }
 
         .education-icon {
@@ -234,7 +267,7 @@
             margin-bottom: 12px;
         }
 
-        /* ===== SKILLS ===== */
+        /* SKILLS */
 
         .skills-grid {
             display: grid;
@@ -242,7 +275,8 @@
             gap: 20px;
         }
 
-        .skill-number {
+        .skill-number,
+        .project-number {
             color: #60a5fa;
             font-size: 13px;
             letter-spacing: 2px;
@@ -252,7 +286,7 @@
             margin-top: 12px;
         }
 
-        /* ===== PROJECTS ===== */
+        /* PROJECTS */
 
         .projects-grid {
             display: grid;
@@ -261,14 +295,7 @@
         }
 
         .project-card {
-            background: linear-gradient(
-                145deg,
-                #122b4d,
-                #0c1c34
-            );
-            border: 1px solid #294d78;
-            border-radius: 16px;
-            padding: 28px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -281,21 +308,20 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .project-icon {
-            font-size: 30px;
-            color: #60a5fa;
-            margin-bottom: 15px;
-        }
-
-        .project-number {
-            color: #60a5fa;
-            font-size: 12px;
-            letter-spacing: 1.5px;
-        }
+        .project-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #294d78;
+    display: block;
+}
 
         .project-card h3 {
             font-size: 23px;
-            color: #ffffff;
+            color: white;
             margin: 12px 0;
         }
 
@@ -328,19 +354,12 @@
         }
 
         .project-link:hover {
-            color: #ffffff;
+            color: white;
         }
 
-        /* ===== CONTACT ===== */
+        /* CONTACT */
 
         .contact-card {
-            background: linear-gradient(
-                145deg,
-                #122b4d,
-                #0c1c34
-            );
-            border: 1px solid #294d78;
-            border-radius: 16px;
             padding: 35px;
         }
 
@@ -369,7 +388,7 @@
             border-color: #60a5fa;
         }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
 
         footer {
             border-top: 1px solid #294d78;
@@ -386,7 +405,7 @@
             color: #7db8ff;
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* RESPONSIVE DESIGN */
 
         @media (max-width: 900px) {
             .navbar {
@@ -400,6 +419,24 @@
 
             .skills-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        
+
+        @media (max-width: 700px) {
+            .hero-layout {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 35px;
+            }
+
+            .hero-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-content h2 {
+                font-size: 35px;
             }
         }
 
@@ -421,7 +458,7 @@
                 padding: 65px 0;
             }
 
-            .hero p {
+            .hero-content p {
                 font-size: 15px;
             }
 
@@ -448,84 +485,15 @@
                 flex-direction: column;
             }
         }
-        
-/* Home Section with Profile Picture */
 
-
-/* Perfect Circular Profile Picture */
-
-
-.hero-layout {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    min-height: 75vh;
-}
-
-.hero-content {
-    flex: 1;
-}
-
-.hero-content h1 {
-    font-size: 28px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.hero-content h2 {
-    font-size: 48px;
-    color: #60a5fa;
-    margin-bottom: 15px;
-}
-
-.hero-content h3 {
-    font-size: 20px;
-    color: #dbeafe;
-    margin-bottom: 18px;
-}
-
-.hero-content p {
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 25px;
-}
-
-.hero-image {
-    width: 280px;
-    height: 280px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #60a5fa;
-    box-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-@media (max-width: 700px) {
-    .hero-layout {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding-top: 35px;
-    }
-
-    .hero-image {
-        width: 220px;
-        height: 220px;
-    }
-
-    .hero-content h2 {
-        font-size: 35px;
-    }
-}
-
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
@@ -546,45 +514,39 @@
     </nav>
 
     <!-- HOME -->
-    ```html
-<!-- HOME -->
-```html
-<!-- HOME SECTION -->
-<section class="hero" id="home">
-    <div class="container hero-layout">
+    <section class="hero" id="home">
+        <div class="container hero-layout">
 
-        <div class="hero-content">
-            <h1>Hello, I'm</h1>
+            <div class="hero-content">
+                <h1>Hello, I'm</h1>
+                <h2>Toseefa Rafique</h2>
 
-            <h2>Toseefa Rafique</h2>
+                <h3>
+                    Flutter Developer |
+                    BS Information Technology Student
+                </h3>
 
-            <h3>
-                Flutter Developer |
-                BS Information Technology Student
-            </h3>
+                <p>
+    I build modern, user-friendly digital experiences using
+    Flutter, HTML, and CSS,JavaScript. I enjoy creating responsive websites
+    and useful applications that solve real-world problems.
+</p>
 
-            <p>
-                I build useful, modern, user-friendly
-                digital solutions with Flutter.
-            </p>
+                <a href="#projects" class="button button-primary">
+                    View My Projects →
+                </a>
 
-            <a href="#projects" class="button button-primary">
-                View My Projects →
-            </a>
+                <a href="#contact" class="button button-outline">
+                    Contact Me →
+                </a>
+            </div>
 
-            <a href="#contact" class="button button-outline">
-                Contact Me →
-            </a>
+            <div class="hero-image">
+                <img src="Niqabi Work Setup Minimal.jpg" alt="Niqabi Work Setup Minimal.jpg.jpg">
+            </div>
+
         </div>
-
-        <div class="hero-image">
-            <img src="download.jpg"
-                 alt="Toseefa Rafique">
-        </div>
-
-    </div>
-</section>
-```
+    </section>
 
     <!-- ABOUT -->
     <section class="section" id="about">
@@ -623,15 +585,9 @@
 
             <div class="info-card">
                 <div class="education-icon">🎓</div>
-
                 <h3>BS Information Technology</h3>
-
-                 <p class="university-name">
-                University of the Punjab
-            </p>
-
-            <p class="education-year">
-                2023 – 2027
+                <p>University of the Punjab</p>
+                <p>2023 – 2027</p>
             </div>
         </div>
     </section>
@@ -684,6 +640,11 @@
                     <h3>GitHub</h3>
                     <p>Hosting and managing coding projects.</p>
                 </div>
+                <div class="info-card skill-card">
+    <span class="skill-number">06</span>
+    <h3>UI/UX Design</h3>
+    <p>Designing clean, attractive, and user-friendly interfaces.</p>
+</div>
 
             </div>
         </div>
@@ -704,12 +665,12 @@
 
                 <!-- PROJECT 1 -->
                 <div class="project-card">
-                    <div class="project-icon">✦</div>
+                    <img class="project-image"
+                         src="Bano Qabil Exam App Showcase.png"
+                         alt="Bano Qabil Exam App preview"
+                         loading="lazy">
 
-                    <span class="project-number">
-                        01 / EXAM APP
-                    </span>
-
+                    <span class="project-number">01 / EXAM APP</span>
                     <h3>Bano Qabil Exam App</h3>
 
                     <p>
@@ -723,23 +684,21 @@
                         <span>Development</span>
                     </div>
 
-                    <a
-                        class="project-link"
-                        href="https://github.com/toseefarafique/bano-qabil-exam-app"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project-link"
+                       href="https://github.com/toseefarafique/bano-qabil-exam-app"
+                       target="_blank" rel="noopener noreferrer">
                         View Project →
                     </a>
                 </div>
 
                 <!-- PROJECT 2 -->
                 <div class="project-card">
-                    <div class="project-icon">✚</div>
+                    <img class="project-image"
+                         src="Medi Book Medical App Showcase.png"
+                         alt="Doctor Appointment App preview"
+                         loading="lazy">
 
-                    <span class="project-number">
-                        02 / HEALTHCARE
-                    </span>
-
+                    <span class="project-number">02 / HEALTHCARE</span>
                     <h3>Doctor Appointment App</h3>
 
                     <p>
@@ -753,23 +712,25 @@
                         <span>App Development</span>
                     </div>
 
-                    <a
-                        class="project-link"
-                        href="https://github.com/toseefarafique/doctor-appointment-app"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project-link"
+                       href="https://github.com/toseefarafique/doctor-appointment-app"
+                       target="_blank" rel="noopener noreferrer">
                         View Project →
                     </a>
                 </div>
 
                 <!-- PROJECT 3 -->
                 <div class="project-card">
-                    <div class="project-icon">◇</div>
-
-                    <span class="project-number">
-                        03 / GAME
-                    </span>
-
+                    <video class="project-image"
+       controls
+       muted
+       playsinline
+       preload="metadata">
+    <source src="Tic Tac Toe — Mozilla Firefox 2026-10-22 12-24-47.mp4"
+            type="video/mp4">
+    Your browser does not support video.
+</video>
+                    <span class="project-number">03 / GAME</span>
                     <h3>Tic Tac Toe Game</h3>
 
                     <p>
@@ -784,23 +745,25 @@
                         <span>JavaScript</span>
                     </div>
 
-                    <a
-                        class="project-link"
-                        href="https://github.com/toseefarafique/tic-tac-toe-game"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project-link"
+                       href="https://github.com/toseefarafique/tic-tac-toe-game"
+                       target="_blank" rel="noopener noreferrer">
                         View Project →
                     </a>
                 </div>
 
                 <!-- PROJECT 4 -->
                 <div class="project-card">
-                    <div class="project-icon">▣</div>
-
-                    <span class="project-number">
-                        04 / E-COMMERCE
-                    </span>
-
+                    <video class="project-image"
+       controls
+       muted
+       playsinline
+       preload="metadata">
+    <source src="Amazon — Mozilla Firefox 2026-10-22 12-47-07.mp4"
+            type="video/mp4">
+    Your browser does not support video.
+</video>
+                    <span class="project-number">04 / E-COMMERCE</span>
                     <h3>Amazon Clone</h3>
 
                     <p>
@@ -815,23 +778,25 @@
                         <span>Web Development</span>
                     </div>
 
-                    <a
-                        class="project-link"
-                        href="https://github.com/toseefarafique/amazon-clone"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project-link"
+                       href="https://github.com/toseefarafique/amazon-clone"
+                       target="_blank" rel="noopener noreferrer">
                         View Project →
                     </a>
                 </div>
 
                 <!-- PROJECT 5 -->
                 <div class="project-card">
-                    <div class="project-icon">🍽</div>
+                    <video class="project-image"
+       controls
+       muted
+       playsinline
+       preload="metadata">
+    <source src="Food Web — Mozilla Firefox 2026-10-22 12-31-12.mp4"
+            type="video/mp4">
+</video>
 
-                    <span class="project-number">
-                        05 / WEBSITE
-                    </span>
-
+                    <span class="project-number">05 / WEBSITE</span>
                     <h3>Food Web Project</h3>
 
                     <p>
@@ -846,11 +811,9 @@
                         <span>Web Design</span>
                     </div>
 
-                    <a
-                        class="project-link"
-                        href="https://github.com/toseefarafique/food_web_activity"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a class="project-link"
+                       href="https://github.com/toseefarafique/food_web_activity"
+                       target="_blank" rel="noopener noreferrer">
                         View Project →
                     </a>
                 </div>
@@ -872,25 +835,20 @@
                 </p>
 
                 <div class="contact-links">
-
-                    <a
-                        href="https://github.com/toseefarafique"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a href="https://github.com/toseefarafique"
+                       target="_blank" rel="noopener noreferrer">
                         GitHub ↗
                     </a>
 
-                    <a
-                        href="https://www.linkedin.com/"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        LinkedIn ↗
+                    <a href="https://www.linkedin.com/in/toseefa-rafiqu/"
+                       target="_blank" rel="noopener noreferrer">
+                        Visit My LinkedIn ↗
                     </a>
 
-                    <a href="mailto:">
-                        Email Me ↗
+                    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=toseefarafiqu@gmail.com&amp;su=Hello%20Toseefa&amp;body=I%20saw%20your%20portfolio%20and%20wanted%20to%20connect!"
+                       target="_blank" rel="noopener noreferrer">
+                        Email ↗
                     </a>
-
                 </div>
 
                 <p style="margin-top: 25px; margin-bottom: 0;">
@@ -902,13 +860,9 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>
-            © 2026 Toseefa Rafique. All rights reserved.
-        </p>
-
+        <p>© 2026 Toseefa Rafique. All rights reserved.</p>
         <a href="#home">Back to Top ↑</a>
     </footer>
 
 </body>
 </html>
-```
